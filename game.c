@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "game.h"
 
 char gamePieces[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -31,3 +32,34 @@ void playersMove(void) {
         printf("Square is already taken!\n");
     }
 }
+
+bool isGameOver(void) {
+    if (gamePieces[0] == gamePieces[1] && gamePieces[1] == gamePieces[2]) {
+        return true;
+    } else if (gamePieces[3] == gamePieces[4] && gamePieces[4] == gamePieces[5]) {
+        return true;
+    } else if (gamePieces[6] == gamePieces[7] && gamePieces[7] == gamePieces[8]) {
+        return true;
+    } else if (gamePieces[0] == gamePieces[4] && gamePieces[4] == gamePieces[8]) {
+        return true;
+    } else if (gamePieces[2] == gamePieces[4] && gamePieces[4] == gamePieces[6]) {
+        return true;
+    } else if (gamePieces[0] == gamePieces[3] && gamePieces[3] == gamePieces[6]) {
+        return true;
+    } else if (gamePieces[1] == gamePieces[4] && gamePieces[4] == gamePieces[7]) {
+        return true;
+    } else if (gamePieces[2] == gamePieces[5] && gamePieces[5] == gamePieces[8]) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// 012
+// 345
+// 678
+// 048
+// 246
+// 036
+// 147
+// 258
