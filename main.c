@@ -20,6 +20,6 @@ int main(void) {
         printGameBoard();
         printf("Tie Game!\n");
     }
-
+    
     return 0;
 }

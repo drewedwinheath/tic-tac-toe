@@ -6,5 +6,6 @@ void playersMove(void);
 bool isWinner(void);
 bool isTie(void);
 int playerTurnCheck(void);
+void resetGameBoard(void);
 
 #endif
