@@ -33,7 +33,7 @@ void playersMove(void) {
     }
 }
 
-bool isGameOver(void) {
+bool isWinner(void) {
     if (gamePieces[0] == gamePieces[1] && gamePieces[1] == gamePieces[2]) {
         return true;
     } else if (gamePieces[3] == gamePieces[4] && gamePieces[4] == gamePieces[5]) {
@@ -51,7 +51,31 @@ bool isGameOver(void) {
     } else if (gamePieces[2] == gamePieces[5] && gamePieces[5] == gamePieces[8]) {
         return true;
     } else {
-        return false;
+       return false;
+    }
+}
+
+bool isTie(void) {
+    if (gamePieces[0] == '1' ||
+        gamePieces[1] == '2' ||
+        gamePieces[2] == '3' ||
+        gamePieces[3] == '4' ||
+        gamePieces[4] == '5' ||
+        gamePieces[5] == '6' ||
+        gamePieces[6] == '7' ||
+        gamePieces[7] == '8' ||
+        gamePieces[8] == '9') {
+            return false;
+        } else {
+            return true;
+        }
+}
+
+int playerTurnCheck(void) {
+    if (playerTurn == 0) {
+        return 0;
+    } else {
+        return 1;
     }
 }
 
@@ -63,3 +87,5 @@ bool isGameOver(void) {
 // 036
 // 147
 // 258
+
+// int winningScenarios[] {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 4, 8}, {2, 4, 6}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}};

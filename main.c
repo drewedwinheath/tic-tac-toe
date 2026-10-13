@@ -3,20 +3,23 @@
 #include "game.h"
 
 int main(void) {
-    // printGameBoard();
-    // isGameOver();
-    while (isGameOver() == false) {
+
+    while (isWinner() == false && isTie() == false) {
         printGameBoard();
         playersMove();
     }
 
-    printGameBoard();
-    // if (playerTurn == 1) {
-    //     printf("X Wins!");
-    // } else {
-    //     printf("O Wins!");
-    // }
-
+    if (isWinner() == true) {
+        printGameBoard();
+        if (playerTurnCheck() == 1) {
+            printf("'X' Wins!\n");
+        } else {
+            printf("'O' Wins!\n");
+        }
+    } else {
+        printGameBoard();
+        printf("Tie Game!\n");
+    }
 
     return 0;
 }

@@ -3,5 +3,8 @@
 
 void printGameBoard(void);
 void playersMove(void);
-bool isGameOver(void);
+bool isWinner(void);
+bool isTie(void);
+int playerTurnCheck(void);
+
 #endif
