@@ -11,12 +11,18 @@ int winCounter[3] = {0, 0, 0};
 int gamesPlayed = 0;
 
 void printGameBoard(void) {
-    system("clear");
+    printf("-------------------------------\n          TIC-TAC-TOE          \n-------------------------------\n\n");
+    if (playerTurn == 0) {
+        printf("X's Turn -----\n");
+    } else {
+        printf("O's Turn -----\n");
+    }
     printf("\n %c | %c | %c \n", gamePieces[0], gamePieces[1], gamePieces[2]);
     printf("-----------\n");
     printf(" %c | %c | %c \n", gamePieces[3], gamePieces[4], gamePieces[5]);
     printf("-----------\n");
     printf(" %c | %c | %c \n\n", gamePieces[6], gamePieces[7], gamePieces[8]);
+    printf("X: %i Wins, O: %i Wins, Ties: %i\n", winCounter[0], winCounter[1], winCounter[2]);
 }
 
  void playersMove(void) {
@@ -26,11 +32,12 @@ void printGameBoard(void) {
      do { 
         printf("Select a square to place your piece in: ");
         fgets(inputHold, sizeof(inputHold), stdin);
-        if (inputHold[0] != '1' && inputHold[0] != '2' && inputHold[0] != '3' && inputHold[0] != '4' && inputHold[0] != '5' && inputHold[0] != '6' && inputHold[0] != '7' && inputHold[0] != '8' && inputHold[0] != '9' || strlen(inputHold) != 2) {
+        if ((inputHold[0] != '1' && inputHold[0] != '2' && inputHold[0] != '3' && inputHold[0] != '4' && inputHold[0] != '5' && inputHold[0] != '6' && inputHold[0] != '7' && inputHold[0] != '8' && inputHold[0] != '9') || strlen(inputHold) != 2) {
+            system("clear");
             printGameBoard();
             printf("Invalid input!\n");
         }
-     } while (inputHold[0] != '1' && inputHold[0] != '2' && inputHold[0] != '3' && inputHold[0] != '4' && inputHold[0] != '5' && inputHold[0] != '6' && inputHold[0] != '7' && inputHold[0] != '8' && inputHold[0] != '9' || strlen(inputHold) != 2);
+     } while ((inputHold[0] != '1' && inputHold[0] != '2' && inputHold[0] != '3' && inputHold[0] != '4' && inputHold[0] != '5' && inputHold[0] != '6' && inputHold[0] != '7' && inputHold[0] != '8' && inputHold[0] != '9') || strlen(inputHold) != 2);
      
      sscanf(inputHold, "%i", &playerSelection);
 
@@ -41,13 +48,16 @@ void printGameBoard(void) {
             gamePieces[playerSelection] = 'X';
             playerTurn = 1;
             moveCount++;
+            system("clear");
         } else {
             gamePieces[playerSelection] = 'O';
             playerTurn = 0;
             moveCount++;
+            system("clear");
         }
     } else {
-        printf("\n\nSquare is already taken!\n");
+        system("clear");
+        printf("<ERROR> Square is already taken! <ERROR>\n");
     }
  }
 
@@ -138,7 +148,7 @@ void scoreTracker(void) {
         winCounter[2]++;
     }
 
-    printf("X: %i Wins, O: %i Wins, Ties: %i\n", winCounter[0], winCounter[1], winCounter[2]);
+    // printf("X: %i Wins, O: %i Wins, Ties: %i\n", winCounter[0], winCounter[1], winCounter[2]);
 }
 
 // 012
