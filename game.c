@@ -104,9 +104,9 @@ void resetGameBoard(void) {
 void resetPlayerTurn(void) {
     if (moveCount % 2 == 0) {
         if (playerTurn == 0) {
-            playerTurn = 0;
-        } else {
             playerTurn = 1;
+        } else {
+            playerTurn = 0;
         }
     }
 
