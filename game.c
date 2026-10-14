@@ -147,17 +147,4 @@ void scoreTracker(void) {
     if (isTie() == true) {
         winCounter[2]++;
     }
-
-    // printf("X: %i Wins, O: %i Wins, Ties: %i\n", winCounter[0], winCounter[1], winCounter[2]);
 }
-
-// 012
-// 345
-// 678
-// 048
-// 246
-// 036
-// 147
-// 258
-
-// int winningScenarios[] {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 4, 8}, {2, 4, 6}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}};
