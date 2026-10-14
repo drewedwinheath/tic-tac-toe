@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "game.h"
 #include <string.h>
+#include <stdlib.h>
 
 char gamePieces[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 int playerTurn = 0;
@@ -10,6 +11,7 @@ int winCounter[3] = {0, 0, 0};
 int gamesPlayed = 0;
 
 void printGameBoard(void) {
+    system("clear");
     printf("\n %c | %c | %c \n", gamePieces[0], gamePieces[1], gamePieces[2]);
     printf("-----------\n");
     printf(" %c | %c | %c \n", gamePieces[3], gamePieces[4], gamePieces[5]);

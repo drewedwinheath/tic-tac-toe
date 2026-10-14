@@ -40,8 +40,6 @@ int main(void) {
         resetPlayerTurn();
     } while (playAgain[0] == 'y' || playAgain[0] == 'Y');
 
-
-    printf("%zu\n", strlen(playAgain));
     printf("Have a good day, Goodbye!\n");
     return 0;
 }
