@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "game.h"
+#include <string.h>
 
 char gamePieces[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 int playerTurn = 0;
@@ -13,12 +14,22 @@ void printGameBoard(void) {
     printf(" %c | %c | %c \n", gamePieces[6], gamePieces[7], gamePieces[8]);
 }
 
-void playersMove(void) {
-    int playerSelection;
+ void playersMove(void) {
+     int playerSelection;
+     char inputHold[100];
 
-    printf("Select a square to place your piece in: ");
-    scanf("%i", &playerSelection);
-    playerSelection--;
+     do { 
+        printf("Select a square to place your piece in: ");
+        fgets(inputHold, sizeof(inputHold), stdin);
+        if (inputHold[0] != '1' && inputHold[0] != '2' && inputHold[0] != '3' && inputHold[0] != '4' && inputHold[0] != '5' && inputHold[0] != '6' && inputHold[0] != '7' && inputHold[0] != '8' && inputHold[0] != '9' || strlen(inputHold) != 2) {
+            printGameBoard();
+            printf("Invalid input!\n");
+        }
+     } while (inputHold[0] != '1' && inputHold[0] != '2' && inputHold[0] != '3' && inputHold[0] != '4' && inputHold[0] != '5' && inputHold[0] != '6' && inputHold[0] != '7' && inputHold[0] != '8' && inputHold[0] != '9' || strlen(inputHold) != 2);
+     
+     sscanf(inputHold, "%i", &playerSelection);
+
+     playerSelection--;
     
     if (gamePieces[playerSelection] != 'X' && gamePieces[playerSelection] != 'O') {
         if (playerTurn == 0) {
@@ -29,9 +40,9 @@ void playersMove(void) {
             playerTurn = 0;
         }
     } else {
-        printf("Square is already taken!\n");
+        printf("\n\nSquare is already taken!\n");
     }
-}
+ }
 
 bool isWinner(void) {
     if (gamePieces[0] == gamePieces[1] && gamePieces[1] == gamePieces[2]) {
