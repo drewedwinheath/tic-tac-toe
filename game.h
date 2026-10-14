@@ -8,5 +8,6 @@ bool isTie(void);
 int playerTurnCheck(void);
 void resetGameBoard(void);
 void resetPlayerTurn(void);
+void scoreTracker(void);
 
 #endif

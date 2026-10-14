@@ -6,13 +6,15 @@
 char gamePieces[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 int playerTurn = 0;
 int moveCount = 0;
+int winCounter[3] = {0, 0, 0};
+int gamesPlayed = 0;
 
 void printGameBoard(void) {
-    printf(" %c | %c | %c \n", gamePieces[0], gamePieces[1], gamePieces[2]);
+    printf("\n %c | %c | %c \n", gamePieces[0], gamePieces[1], gamePieces[2]);
     printf("-----------\n");
     printf(" %c | %c | %c \n", gamePieces[3], gamePieces[4], gamePieces[5]);
     printf("-----------\n");
-    printf(" %c | %c | %c \n", gamePieces[6], gamePieces[7], gamePieces[8]);
+    printf(" %c | %c | %c \n\n", gamePieces[6], gamePieces[7], gamePieces[8]);
 }
 
  void playersMove(void) {
@@ -37,12 +39,10 @@ void printGameBoard(void) {
             gamePieces[playerSelection] = 'X';
             playerTurn = 1;
             moveCount++;
-            printf("%i\n", moveCount);
         } else {
             gamePieces[playerSelection] = 'O';
             playerTurn = 0;
             moveCount++;
-            printf("%i\n", moveCount);
         }
     } else {
         printf("\n\nSquare is already taken!\n");
@@ -111,6 +111,32 @@ void resetPlayerTurn(void) {
     }
 
     moveCount = 0;
+}
+
+void scoreTracker(void) {
+    gamesPlayed++;
+
+    if (isWinner() == true) {
+        if (gamesPlayed % 2 == 0) {
+            if (moveCount % 2 == 0) {
+                winCounter[0]++;
+            } else {
+                winCounter[1]++;
+            }
+        } else {
+            if (moveCount % 2 == 0) {
+                winCounter[1]++;
+            } else {
+                winCounter[0]++;
+            }
+        }
+    }
+
+    if (isTie() == true) {
+        winCounter[2]++;
+    }
+
+    printf("X: %i Wins, O: %i Wins, Ties: %i\n", winCounter[0], winCounter[1], winCounter[2]);
 }
 
 // 012

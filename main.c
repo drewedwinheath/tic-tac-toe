@@ -16,14 +16,16 @@ int main(void) {
         if (isWinner() == true) {
             printGameBoard();
             if (playerTurnCheck() == 1) {
-                printf("'X' Wins!\n");
+                printf("'X' Wins!\n\n");
             } else {
-                printf("'O' Wins!\n");
+                printf("'O' Wins!\n\n");
             }
         } else {
             printGameBoard();
-            printf("Tie Game!\n");
+            printf("Tie Game!\n\n");
         }
+
+        scoreTracker();
 
         do {
             printf("\nDo want to play again? (y/n): ");
