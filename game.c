@@ -5,6 +5,7 @@
 
 char gamePieces[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 int playerTurn = 0;
+int moveCount = 0;
 
 void printGameBoard(void) {
     printf(" %c | %c | %c \n", gamePieces[0], gamePieces[1], gamePieces[2]);
@@ -35,9 +36,13 @@ void printGameBoard(void) {
         if (playerTurn == 0) {
             gamePieces[playerSelection] = 'X';
             playerTurn = 1;
+            moveCount++;
+            printf("%i\n", moveCount);
         } else {
             gamePieces[playerSelection] = 'O';
             playerTurn = 0;
+            moveCount++;
+            printf("%i\n", moveCount);
         }
     } else {
         printf("\n\nSquare is already taken!\n");
@@ -94,6 +99,18 @@ void resetGameBoard(void) {
     for (int i = 0; i < 9; i++) {
         gamePieces[i] = (i + 1) + '0';
     }
+}
+
+void resetPlayerTurn(void) {
+    if (moveCount % 2 == 0) {
+        if (playerTurn == 0) {
+            playerTurn = 0;
+        } else {
+            playerTurn = 1;
+        }
+    }
+
+    moveCount = 0;
 }
 
 // 012

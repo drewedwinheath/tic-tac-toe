@@ -34,6 +34,8 @@ int main(void) {
             }
         } while (playAgain[0] != 'Y' && playAgain[0] != 'y' && playAgain[0] != 'N' && playAgain[0] != 'n' || strlen(playAgain) != 2);
 
+
+        resetPlayerTurn();
     } while (playAgain[0] == 'y' || playAgain[0] == 'Y');
 
 
